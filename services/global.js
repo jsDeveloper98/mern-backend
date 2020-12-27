@@ -51,7 +51,6 @@ const updateRecord = (model, router) => {
     model
       .findById(id)
       .then((data) => {
-        console.log({ data });
         data = { id, ...updates };
 
         data
