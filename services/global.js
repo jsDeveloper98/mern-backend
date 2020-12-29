@@ -3,7 +3,7 @@ const findAll = (model, router) => {
     model
       .find()
       .then((data) => res.json(data))
-      .catch((err) => res.status(400).json(`Error: ${err}`));
+      .catch((err) => res.status(400).json({ message: err.message }));
   });
 };
 
@@ -14,7 +14,7 @@ const findRecord = (model, router) => {
     model
       .findById(id)
       .then((data) => res.json(data))
-      .catch((err) => res.status(400).json(`Error: ${err}`));
+      .catch((err) => res.status(400).json({ message: err.message }));
   });
 };
 
@@ -24,8 +24,8 @@ const deleteRecord = (model, router) => {
 
     model
       .findByIdAndDelete(id)
-      .then(() => res.json("Successfully deleted"))
-      .catch((err) => res.status(400).json(`Error: ${err}`));
+      .then(() => res.json({ message: 'Successfully deleted' }))
+      .catch((err) => res.status(400).json({ message: err.message }));
   });
 };
 
@@ -39,8 +39,8 @@ const createRecord = (model, router) => {
 
     doc
       .save()
-      .then(() => res.json("Successfully created"))
-      .catch((err) => res.status(400).json(`Error: ${err}`));
+      .then(() => res.json({ message: 'Successfully created' }))
+      .catch((err) => res.status(400).json({ message: err.message }));
   });
 };
 
@@ -55,8 +55,8 @@ const updateRecord = (model, router) => {
 
         data
           .save()
-          .then(() => res.json("Successfully updated"))
-          .catch((err) => res.status(400).json(`Error: ${err}`));
+          .then(() => res.json({ message: 'Successfully updated' }))
+          .catch((err) => res.status(400).json({ message: err.message }));
       })
       .catch((err) => {
         res.status(400).json(`Error: ${err}`);
