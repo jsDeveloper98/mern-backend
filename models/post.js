@@ -7,6 +7,7 @@ const schema = new Schema({
   category: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   user: { type: Types.ObjectId, ref: "User" },
+  likes: [{ type: Types.ObjectId, ref: "User" }],
 });
 
 module.exports = model("Post", schema);
